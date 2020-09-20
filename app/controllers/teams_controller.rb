@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+  require "open-uri"
   # GET /teams
   # GET /teams.json
   def index
@@ -59,6 +60,20 @@ class TeamsController < ApplicationController
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def create_all_teams
+    response = open("https://statsapi.web.nhl.com/api/v1/teams").read
+    json = JSON.parse(response)
+    response_teams = json["teams"]
+
+    response_teams.each do |team|
+      @t = Team.new
+      @t.name = team["name"]
+      @t.save
+    end
+
+    redirect_to :root
   end
 
   private
