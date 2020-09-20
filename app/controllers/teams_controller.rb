@@ -68,11 +68,17 @@ class TeamsController < ApplicationController
     response_teams = json["teams"]
 
     response_teams.each do |team|
-      @t = Team.new
-      @t.name = team["name"]
-      @t.save
+      t = Team.new
+      t.name = team["name"]
+      t.save
     end
 
+    redirect_to :root
+  end
+
+  def delete_all_teams
+    Team.delete_all
+    
     redirect_to :root
   end
 
