@@ -66,9 +66,11 @@ class TeamsController < ApplicationController
     response = open("https://statsapi.web.nhl.com/api/v1/teams").read
     json = JSON.parse(response)
     response_teams = json["teams"]
+    puts json["teams"].class
 
     response_teams.each do |team|
       t = Team.new
+      t.nhl_id = team["id"]
       t.name = team["name"]
       t.save
     end
@@ -78,7 +80,7 @@ class TeamsController < ApplicationController
 
   def delete_all_teams
     Team.delete_all
-    
+
     redirect_to :root
   end
 
