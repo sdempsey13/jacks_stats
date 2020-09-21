@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_225949) do
+ActiveRecord::Schema.define(version: 2020_09_21_150910) do
+
+  create_table "players", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "position"
+    t.integer "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "nhl_id"
   end
 
+  add_foreign_key "players", "teams"
 end
