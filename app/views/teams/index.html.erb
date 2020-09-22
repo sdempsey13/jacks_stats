@@ -24,8 +24,32 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Position</th>
+      <th>Team</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.number %></td>
+        <td><%= player.position %></td>
+        <td>Team Feature Coming Soon</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
 <%= link_to 'Create all the Teams!', create_all_teams_path %>
-<%= link_to 'Create all the Players!', create_all_players_path %>
 <%= link_to 'Delete all the Teams!', delete_all_teams_path %>
+<br>
+<%= link_to 'Create all the Players!', create_all_players_path %>
+<%= link_to 'Delete all the Players!', delete_all_players_path %>

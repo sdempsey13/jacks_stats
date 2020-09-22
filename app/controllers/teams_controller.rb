@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all
+    @players = Player.all
   end
 
   # GET /teams/1
@@ -66,7 +67,6 @@ class TeamsController < ApplicationController
     response = open("https://statsapi.web.nhl.com/api/v1/teams").read
     json = JSON.parse(response)
     response_teams = json["teams"]
-    puts json["teams"].class
 
     response_teams.each do |team|
       t = Team.new
