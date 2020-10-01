@@ -1,55 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col text-center">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
 
-<h1>Teams</h1>
+  <div class="row">
+    <div class="col text-center">
+      <h1>Teams</h1>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>NHL ID</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @teams.each do |team| %>
+    <div class="row">
+      <div class="col">
+        <%= team.name %>
+      </div>
+    </div>
+  <% end %>
 
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.nhl_id %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-sm-4 text-center">
+      <%= button_to 'Create all the Teams!', create_all_teams_path, class: "btn btn-primary"  %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Position</th>
-      <th>Team</th>
-    </tr>
-  </thead>
+    <div class="col-sm-4 text-center">
+      <%= button_to 'Delete all the Teams!', delete_all_teams_path, class: "btn btn-warning"  %>
+    </div>
 
-  <tbody>
-    <% @players.each do |player| %>
-      <tr>
-        <td><%= player.name %></td>
-        <td><%= player.number %></td>
-        <td><%= player.position %></td>
-        <td>Team Feature Coming Soon</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Create all the Teams!', create_all_teams_path %>
-<%= link_to 'Delete all the Teams!', delete_all_teams_path %>
-<br>
-<%= link_to 'Create all the Players!', create_all_players_path %>
-<%= link_to 'Delete all the Players!', delete_all_players_path %>
+    <div class="col-sm-4 text-center">
+      <%= button_to 'Delete all the Players!', delete_all_players_path, class: "btn btn-warning"  %>
+    </div>
+  </div>
+</div>

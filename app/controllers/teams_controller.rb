@@ -73,6 +73,20 @@ class TeamsController < ApplicationController
       t.nhl_id = team["id"]
       t.name = team["name"]
       t.save
+
+      response = open("https://statsapi.web.nhl.com/api/v1/teams/#{t.nhl_id}?expand=team.roster").read
+      json = JSON.parse(response)
+      players = json["teams"][0]["roster"]["roster"]
+
+      players.each do |player|
+        p = Player.new
+        p.nhl_id = player["person"]["id"]
+        p.name = player["person"]["fullName"]
+        p.number = player["jerseyNumber"]
+        p.position = player["position"]["name"]
+        p.team_id = t.id
+        p.save
+      end
     end
 
     redirect_to :root
