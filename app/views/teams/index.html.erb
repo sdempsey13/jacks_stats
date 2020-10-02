@@ -26,7 +26,13 @@
             <%= team.name %>
           </div>
           <div class="col-sm-12 collapse" id="collapseExample<%= team.name.gsub(/\s+/, "") %>">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis obcaecati nulla placeat enim provident itaque et rerum omnis vitae nam illum consequatur accusantium, voluptates voluptatem fugit commodi sunt porro laboriosam?
+            <% team.players.each do |player| %>
+              <div class="row">
+                <div class="col">
+                  <%= player.name %>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
