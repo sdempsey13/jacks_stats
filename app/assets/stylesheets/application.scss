@@ -1,1 +1,11 @@
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap";
+
+.team-holder {
+  margin: 1em 0;
+  padding: .5em;
+  color: white;
+  font-size: 1.25rem;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}

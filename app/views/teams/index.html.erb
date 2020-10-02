@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col text-center">
       <p id="notice"><%= notice %></p>
@@ -6,18 +6,55 @@
   </div>
 
   <div class="row">
-    <div class="col text-center">
-      <h1>Teams</h1>
+
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col">
+          <h1>Teams</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 team-holder">
+          Jackson's Requested Players
+        </div>
+      </div>
+
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Link with href
+    </a>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Button with data-target
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
   </div>
 
-  <% @teams.each do |team| %>
-    <div class="row">
-      <div class="col">
-        <%= team.name %>
-      </div>
+      <% @teams.each do |team| %>
+        <div class="row">
+          <div class="col-sm-12 team-holder">
+            <%= team.name %>
+          </div>
+          <div class="col-sm-12">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis obcaecati nulla placeat enim provident itaque et rerum omnis vitae nam illum consequatur accusantium, voluptates voluptatem fugit commodi sunt porro laboriosam?
+          </div>
+        </div>
+      <% end %>
+
     </div>
-  <% end %>
+
+    <div class="col-sm-3">
+      <p>This is where filters go</p>
+    </div>
+  </div>
+
+
+
+
 
   <div class="row">
     <div class="col-sm-4 text-center">
