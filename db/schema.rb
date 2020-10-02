@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_145341) do
+ActiveRecord::Schema.define(version: 2020_10_02_212627) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,41 @@ ActiveRecord::Schema.define(version: 2020_09_22_145341) do
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
+  create_table "skater_stats", force: :cascade do |t|
+    t.string "season_year"
+    t.string "season_type"
+    t.float "time_on_ice"
+    t.integer "assists"
+    t.integer "goals"
+    t.integer "pim"
+    t.integer "shots"
+    t.integer "games"
+    t.integer "hits"
+    t.integer "power_play_goals"
+    t.integer "power_play_points"
+    t.float "power_play_time_on_ice"
+    t.float "even_time_on_ice"
+    t.float "faceoff_pct"
+    t.float "shot_pct"
+    t.integer "overtime_goals"
+    t.integer "game_winning_goals"
+    t.integer "short_handed_goal"
+    t.integer "short_handed_points"
+    t.float "short_handed_time_on_ice"
+    t.integer "blocked_shots"
+    t.integer "plus_minus"
+    t.integer "points"
+    t.integer "shifts"
+    t.float "time_on_ice_per_game"
+    t.float "even_time_on_ice_per_game"
+    t.float "short_handed_time_on_ice_per_game"
+    t.float "power_play_time_on_ice_per_game"
+    t.integer "player_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_skater_stats_on_player_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -32,4 +67,5 @@ ActiveRecord::Schema.define(version: 2020_09_22_145341) do
   end
 
   add_foreign_key "players", "teams"
+  add_foreign_key "skater_stats", "players"
 end
