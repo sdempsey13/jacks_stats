@@ -44,21 +44,13 @@
     </div>
   </div>
 
-
-
-
-
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <%= button_to 'Create all the Teams!', create_all_teams_path, class: "btn btn-primary"  %>
+  <div class="row" style="margin-bootom:5em;">
+    <div class="col-sm-3">
+      <%= link_to 'Populate The Website!', populate_all_website_data_path, class: "btn btn-primary", method: :post %>
     </div>
 
-    <div class="col-sm-4 text-center">
-      <%= button_to 'Delete all the Teams!', delete_all_teams_path, class: "btn btn-warning"  %>
-    </div>
-
-    <div class="col-sm-4 text-center">
-      <%= button_to 'Delete all the Players!', delete_all_players_path, class: "btn btn-warning"  %>
+    <div class="col-sm-3">
+      <%= link_to 'Depopulate The Website!', delete_all_website_data_path, class: "btn btn-danger", method: :delete %>
     </div>
   </div>
 </div>

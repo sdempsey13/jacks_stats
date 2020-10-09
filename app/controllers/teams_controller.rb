@@ -86,6 +86,11 @@ class TeamsController < ApplicationController
         p.position = player["position"]["name"]
         p.team_id = t.id
         p.save
+
+        response = open("https://statsapi.web.nhl.com/api/v1/people/#{p.nhl_id}/stats?stats=statsSingleSeason&season=20192020").read
+        json = JSON.parse(response)
+        stats = json["stats"][0]["splits"][0]["season"]
+        puts stats
       end
     end
 
