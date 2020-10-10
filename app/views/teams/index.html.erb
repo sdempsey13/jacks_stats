@@ -26,15 +26,41 @@
         <%= team.name %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-2">
+        Player Name
+      </div>
+      <div class="col-md-1">
+        Season
+      </div>
+      <div class="col-md-1">
+        Games
+      </div>
+      <div class="col-md-1">
+        Shots
+      </div>
+      <div class="col-md-1">
+        Goals
+      </div>
+    </div>
     <% team.players.each do |player| %>
       <div class="row">
         <div class="col-md-2">
           <%= player.name %>
         </div>
         <% player.skater_stats.each do |stat| %>
-          <% if stat.season_year %>
+          <% unless stat == [] %>
             <div class="col-md-1">
               <%= stat.season_year %>
+            </div>
+            <div class="col-md-1">
+              <%= stat.games %>
+            </div>
+            <div class="col-md-1">
+              <%= stat.shots %>
+            </div>
+            <div class="col-md-1">
+              <%= stat.goals %>
             </div>
           <% end %>
         <% end %>

@@ -1,8 +1,8 @@
 class CreateSkaterStats < ActiveRecord::Migration[6.0]
   def change
     create_table :skater_stats do |t|
-      t.string :season_year
-      t.string :season_type
+      t.text :season_year
+      t.text :season_type
       t.integer :time_on_ice
       t.integer :assists
       t.integer :goals
