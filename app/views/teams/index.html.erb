@@ -6,43 +6,41 @@
   </div>
 
   <div class="row">
-
     <div class="col-sm-9">
-      <div class="row">
-        <div class="col">
-          <h1>Teams</h1>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12 team-holder">
-          Jackson's Requested Players
-        </div>
-      </div>
-
-      <% @teams.each do |team| %>
-        <div class="row">
-          <div class="col-sm-12 team-holder" data-toggle="collapse" href="#collapseExample<%= team.name.gsub(/\s+/, "") %>" role="button" aria-expanded="false" aria-controls="collapseExample<%= team.name.gsub(/\s+/, "") %>">
-            <%= team.name %>
-          </div>
-          <div class="col-sm-12 collapse" id="collapseExample<%= team.name.gsub(/\s+/, "") %>">
-            <% team.players.each do |player| %>
-              <div class="row">
-                <div class="col">
-                  <%= player.name %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-
+      <h1>Teams</h1>
     </div>
-
     <div class="col-sm-3">
-      <p>This is where filters go</p>
+      <h3>Filter</h3>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-12 team-holder">
+      Jackson's Requested Players
+    </div>
+  </div>
+
+  <% @teams.each do |team| %>
+    <div class="row">
+      <div class="col-sm-12 team-holder">
+        <%= team.name %>
+      </div>
+    </div>
+    <% team.players.each do |player| %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= player.name %>
+        </div>
+        <% player.skater_stats.each do |stat| %>
+          <% if stat.season_year %>
+            <div class="col-md-1">
+              <%= stat.season_year %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
 
   <div class="row" style="margin-bottom:5em;">
     <div class="col-sm-3">

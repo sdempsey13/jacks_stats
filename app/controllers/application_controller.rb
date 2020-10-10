@@ -32,13 +32,17 @@ class ApplicationController < ActionController::Base
 
         stats.each do |stat|
           s = SkaterStat.new
-          s.season_year = stat["splits"][0]["season"]
-          s.season_type = stat["type"]["gameType"]["description"]
-          s.games = stat["splits"][0]["stat"]["games"]
-          s.shots = stat["splits"][0]["stat"]["shots"]
-          s.goals = stat["splits"][0]["stat"]["goals"]
-          s.player_id = p.id
-          s.save
+          begin
+            s.season_year = stat["splits"][0]["season"]
+            s.season_type = stat["type"]["gameType"]["description"]
+            s.games = stat["splits"][0]["stat"]["games"]
+            s.shots = stat["splits"][0]["stat"]["shots"]
+            s.goals = stat["splits"][0]["stat"]["goals"]
+            s.player_id = p.id
+            s.save
+          rescue StandardError => e
+            print e
+          end
         end
       end
     end
@@ -47,6 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def delete_all_website_data
+    SkaterStat.delete_all
     Player.delete_all
     Team.delete_all
 
