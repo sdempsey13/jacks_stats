@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   require "open-uri"
-  require"byebug"
 
   def populate_all_website_data
     response = open("https://statsapi.web.nhl.com/api/v1/teams").read
