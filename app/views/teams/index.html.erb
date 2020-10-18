@@ -18,38 +18,41 @@
     <div class="col-sm-12 team-holder">
       Jackson's Requested Players
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        Player Name
-      </div>
-      <div class="col-md-1">
-        Season
-      </div>
-      <div class="col-md-1">
-        Games
-      </div>
-      <div class="col-md-1">
-        Shots
-      </div>
-      <div class="col-md-1">
-        Goals
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      Player Name
     </div>
-    <div class="row">
-      McDavid
+    <div class="col-md-1">
+      Season
     </div>
-    <div class="row">
-      Reeves
+    <div class="col-md-1">
+      Games
     </div>
-    <div class="row">
-      Wilson
+    <div class="col-md-1">
+      Shots
     </div>
-    <div class="row">
-      Rask
+    <div class="col-md-1">
+      Goals
     </div>
-    <div class="row">
-      Burns
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= @players.where(name: "Connor McDavid").first.name %>
     </div>
+
+  </div>
+  <div class="row">
+    Reeves
+  </div>
+  <div class="row">
+    Wilson
+  </div>
+  <div class="row">
+    Rask
+  </div>
+  <div class="row">
+    Burns
   </div>
 
   <% @teams.each do |team| %>
